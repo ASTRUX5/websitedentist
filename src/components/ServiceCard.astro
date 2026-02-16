@@ -1,0 +1,68 @@
+---
+export interface Props {
+  number: string;
+  title: string;
+  description: string;
+  priceLabel: string;
+  priceValue: string;
+  delay?: number;
+}
+const { number, title, description, priceLabel, priceValue, delay = 0 } = Astro.props;
+---
+<div class="group relative bg-deep-slate-mid border border-deep-slate-border rounded-lg p-10
+            cursor-pointer overflow-hidden
+            hover:-translate-y-1.5 hover:border-luxury-gold/35
+            hover:shadow-[0_24px_60px_rgba(0,0,0,0.4),0_0_0_1px_rgba(201,168,76,0.1)]
+            transition-all duration-[350ms] cubic-bezier(0.25,0.46,0.45,0.94)"
+     style={`animation-delay: ${delay}ms`}>
+
+  <!-- Bottom accent line -->
+  <div class="absolute bottom-0 left-0 right-0 h-0.5
+              bg-gradient-to-r from-luxury-gold to-luxury-gold-dark
+              scale-x-0 group-hover:scale-x-100 origin-left
+              transition-transform duration-[350ms]"></div>
+
+  <!-- Watermark number -->
+  <span class="absolute top-4 right-6 font-serif text-[80px] font-extrabold
+               text-luxury-gold/[0.05] group-hover:text-luxury-gold/[0.11]
+               leading-none select-none transition-colors duration-[350ms]">
+    {number}
+  </span>
+
+  <!-- Icon slot -->
+  <div class="w-[52px] h-[52px] rounded-lg flex items-center justify-center mb-7
+              bg-luxury-gold-muted border border-luxury-gold/20
+              group-hover:bg-gradient-to-br group-hover:from-luxury-gold group-hover:to-luxury-gold-dark
+              group-hover:border-luxury-gold
+              group-hover:shadow-[0_8px_24px_rgba(201,168,76,0.3)]
+              transition-all duration-[350ms]">
+    <slot name="icon" />
+  </div>
+
+  <h3 class="font-serif text-[22px] font-semibold text-brand-white mb-3
+             group-hover:text-luxury-gold-light transition-colors duration-250">
+    {title}
+  </h3>
+
+  <p class="text-brand-muted text-sm leading-[1.75] mb-7">{description}</p>
+
+  <!-- Price row -->
+  <div class="flex items-center justify-between pt-6 border-t border-deep-slate-border
+              group-hover:border-luxury-gold/20 transition-colors duration-[350ms]">
+    <div>
+      <div class="text-[10px] text-brand-muted uppercase tracking-[1px] mb-0.5">{priceLabel}</div>
+      <div class="font-serif text-[22px] text-luxury-gold-light font-semibold">{priceValue}</div>
+    </div>
+    <div class="w-8 h-8 rounded-full border border-luxury-gold/20 flex items-center justify-center
+                group-hover:bg-luxury-gold group-hover:border-luxury-gold
+                group-hover:translate-x-0.5 group-hover:-translate-y-0.5
+                transition-all duration-[350ms]">
+      <svg class="w-3.5 h-3.5 stroke-luxury-gold group-hover:stroke-deep-slate
+                  transition-colors duration-[350ms]"
+           fill="none" stroke-width="2" viewBox="0 0 24 24">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </div>
+  </div>
+</div>
