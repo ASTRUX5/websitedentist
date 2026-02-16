@@ -1,0 +1,36 @@
+---
+const badges = [
+  { label: 'American Dental Association',      icon: 'star'    },
+  { label: 'Academy of Cosmetic Dentistry',    icon: 'check'   },
+  { label: 'International Team for Implantology', icon: 'shield' },
+  { label: 'NY State Dental Society',          icon: 'award'   },
+  { label: 'Invisalign Diamond Provider',      icon: 'star'    },
+  { label: 'Top Doctor – New York Magazine',   icon: 'heart'   },
+];
+---
+<div class="overflow-hidden border-y border-deep-slate-border bg-deep-slate-mid relative">
+
+  <!-- Edge fade masks -->
+  <div class="pointer-events-none absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-deep-slate-mid to-transparent z-10"></div>
+  <div class="pointer-events-none absolute inset-y-0 right-0 w-28 bg-gradient-to-l from-deep-slate-mid to-transparent z-10"></div>
+
+  <div class="flex w-max animate-marquee">
+    {[...badges, ...badges].map(({ label, icon }) => (
+      <div class="flex items-center gap-4 px-12 py-5 border-r border-deep-slate-border shrink-0">
+        <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0
+                    bg-gradient-to-br from-luxury-gold to-luxury-gold-dark">
+          <svg class="w-3.5 h-3.5 fill-deep-slate" viewBox="0 0 24 24">
+            {icon === 'star'   && <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>}
+            {icon === 'check'  && <polyline points="20 6 9 17 4 12"/>}
+            {icon === 'shield' && <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>}
+            {icon === 'award'  && <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>}
+            {icon === 'heart'  && <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>}
+          </svg>
+        </div>
+        <span class="text-[11px] font-medium text-brand-muted tracking-[1px] uppercase whitespace-nowrap">
+          {label}
+        </span>
+      </div>
+    ))}
+  </div>
+</div>
