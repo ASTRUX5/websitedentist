@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import TestimonialGrid from '../components/TestimonialGrid.astro';
+import BookingCTA from '../components/BookingCTA.astro';
+
+const services = [
+  { number:'01', title:'Porcelain Veneers',        priceLabel:'Starting from', priceValue:'$1,800 / tooth',
+    desc:'Ultra-thin, custom-crafted porcelain shells bonded to your natural teeth for an instantly flawless, luminous smile.', delay:0 },
+  { number:'02', title:'Dental Implants',           priceLabel:'Starting from', priceValue:'$4,200 / implant',
+    desc:'Titanium implants fused to the jawbone — the gold standard for replacing missing teeth with a permanent, completely natural look.', delay:100 },
+  { number:'03', title:'Full Mouth Reconstruction', priceLabel:'Custom quote',  priceValue:'Consult required',
+    desc:'A comprehensive multi-discipline treatment plan combining implants, veneers, crowns, and orthodontics to rebuild your ideal smile.', delay:200 },
+  { number:'04', title:'Digital Smile Design',      priceLabel:'Consultation',  priceValue:'$350',
+    desc:'Previsualize your dream smile using cutting-edge 3D digital imaging and AI simulation — before any procedure begins.', delay:0 },
+  { number:'05', title:'Laser Whitening',           priceLabel:'Starting from', priceValue:'$895 / session',
+    desc:'Professional-grade in-office laser whitening achieving up to 12 shades brighter in a single 90-minute session.', delay:100 },
+  { number:'06', title:'Clear Aligners',            priceLabel:'Starting from', priceValue:'$5,500 / full',
+    desc:'Discreet, comfortable Invisalign® treatment with a Diamond-level provider. Predictable results, no brackets.', delay:200 },
+];
+---
+<Layout
+  title="Elite Dental Studio | Luxury Cosmetic Dentistry New York"
+  description="New York's premier luxury dental studio. Award-winning porcelain veneers, dental implants & full mouth reconstruction. Book your private consultation."
+>
+  <Header />
+  <Hero />
+  <TrustBar />
+
+  <!-- ── Services ── -->
+  <section class="py-[120px] px-20 relative" id="services">
+    <div class="flex items-center gap-3 mb-5">
+      <span class="h-px w-8 bg-luxury-gold inline-block"></span>
+      <span class="text-luxury-gold text-[11px] font-semibold tracking-[3px] uppercase">Signature Treatments</span>
+    </div>
+    <h2 class="font-serif text-[clamp(36px,3.5vw,56px)] font-bold tracking-[-1px] text-brand-white mb-4">
+      The Art of<br />Exceptional Dentistry
+    </h2>
+    <p class="text-brand-muted text-base leading-[1.75] max-w-[560px] mb-16">
+      Each treatment is designed with precision, artistry, and an uncompromising commitment to results that last a lifetime.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {services.map(s => (
+        <ServiceCard
+          number={s.number}
+          title={s.title}
+          description={s.desc}
+          priceLabel={s.priceLabel}
+          priceValue={s.priceValue}
+          delay={s.delay}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- ── Process ── -->
+  <section class="bg-deep-slate-mid border-y border-deep-slate-border py-[120px] px-20" id="our-process">
+    <div class="flex items-center gap-3 mb-5">
+      <span class="h-px w-8 bg-luxury-gold inline-block"></span>
+      <span class="text-luxury-gold text-[11px] font-semibold tracking-[3px] uppercase">The Experience</span>
+    </div>
+    <h2 class="font-serif text-[clamp(36px,3.5vw,56px)] font-bold tracking-[-1px] text-brand-white mb-4">
+      Four Steps to<br />Your Ideal Smile
+    </h2>
+    <p class="text-brand-muted text-base leading-[1.75] max-w-[560px] mb-16">
+      Our meticulous, patient-centred process ensures every detail is thoughtfully addressed from day one.
+    </p>
+
+    <div class="grid md:grid-cols-4 divide-x divide-deep-slate-border border border-deep-slate-border rounded-lg overflow-hidden">
+      {[
+        { step:'Step 01', title:'Luxury Consultation',     desc:'A private 60-minute session with Dr. Chambers to discuss goals, examine your smile, and explore all options — no pressure, no rush.' },
+        { step:'Step 02', title:'3D Digital Planning',     desc:'CBCT scanning and Digital Smile Design software create a precise, visual roadmap of your transformation before touching a tooth.' },
+        { step:'Step 03', title:'Artisan Treatment',       desc:'Every procedure is performed in our spa-like suites with sedation options, premium materials, and zero-compromise precision.' },
+        { step:'Step 04', title:'Lifetime Partnership',    desc:'We provide a lifetime maintenance plan and 24/7 concierge access — because your journey does not end at the final appointment.' },
+      ].map(p => (
+        <div class="bg-deep-slate-mid hover:bg-deep-slate-light transition-colors duration-300 p-12">
+          <div class="flex items-center gap-2.5 mb-6 text-luxury-gold text-[13px] font-semibold
+                      tracking-[2px] uppercase after:content-[''] after:flex-1 after:h-px
+                      after:bg-gradient-to-r after:from-luxury-gold-dark after:to-transparent after:opacity-40">
+            {p.step}
+          </div>
+          <h3 class="font-serif text-xl font-semibold text-brand-white mb-3">{p.title}</h3>
+          <p class="text-brand-muted text-sm leading-[1.75]">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <TestimonialGrid />
+  <BookingCTA />
+
+  <!-- ── Footer ── -->
+  <footer class="bg-deep-slate-mid border-t border-deep-slate-border px-20 py-20">
+    <div class="grid md:grid-cols-4 gap-16 mb-16">
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-9 h-9 rounded-full bg-gradient-to-br from-luxury-gold to-luxury-gold-dark
+                      flex items-center justify-center font-serif font-bold text-deep-slate">E</div>
+          <span class="font-serif text-lg font-semibold text-brand-white">
+            Elite <span class="text-luxury-gold">Dental</span> Studio
+          </span>
+        </div>
+        <p class="text-brand-muted text-sm leading-[1.75] max-w-[280px]">
+          New York's most distinguished destination for cosmetic and restorative dentistry. Crafting exceptional smiles since 2006.
+        </p>
+      </div>
+
+      {[
+        { heading:'Services', links:['Porcelain Veneers','Dental Implants','Full Mouth Reconstruction','Clear Aligners','Laser Whitening'] },
+        { heading:'Practice', links:['About Dr. Chambers','Our Studio','Technology','Financing','Patient Stories'] },
+        { heading:'Contact',  links:['(800) ELITE-DS','hello@elitedentalstudio.com','100 Park Ave, Suite 2000','New York, NY 10017','Mon–Thu: 8am–6pm'] },
+      ].map(col => (
+        <div>
+          <div class="text-[11px] font-semibold tracking-[2px] uppercase text-luxury-gold mb-5">{col.heading}</div>
+          <ul class="flex flex-col gap-3">
+            {col.links.map(l => <li><a href="#" class="text-brand-muted text-sm hover:text-brand-white transition-colors">{l}</a></li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="flex items-center justify-between pt-8 border-t border-deep-slate-border">
+      <span class="text-[12px] text-brand-muted">© 2025 Elite Dental Studio. All Rights Reserved.</span>
+      <span class="text-[12px] text-luxury-gold/60">ADA Member · AACD Member · ITI Fellow</span>
+    </div>
+  </footer>
+</Layout>
