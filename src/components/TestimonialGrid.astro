@@ -1,0 +1,65 @@
+---
+const testimonials = [
+  {
+    initial: 'S',
+    name: 'Sophia Blackwell',
+    meta: 'Porcelain Veneers · London, UK',
+    text: "I flew from London specifically for my veneers after seeing Dr. Chambers' work. The process was flawless, the studio is stunning, and the results exceeded every expectation. I smile differently now — with real confidence.",
+  },
+  {
+    initial: 'M',
+    name: 'Marcus Holt',
+    meta: 'Full Mouth Reconstruction · NYC',
+    text: "After years of hiding my smile in board meetings, the full-arch implant reconstruction changed my professional life entirely. The investment was significant, but the return in confidence alone is incalculable.",
+  },
+  {
+    initial: 'A',
+    name: 'Alessandra Reyes',
+    meta: 'Digital Smile Design + Veneers · Miami',
+    text: "The Digital Smile Design preview was transformative — I knew exactly what my veneers would look like before committing. That transparency is rare in this industry. Pure class from start to finish.",
+  },
+];
+---
+<section class="bg-deep-slate-mid border-y border-deep-slate-border py-[120px] px-20" id="results">
+  <div class="mb-16">
+    <div class="flex items-center gap-3 mb-5">
+      <span class="h-px w-8 bg-luxury-gold inline-block"></span>
+      <span class="text-luxury-gold text-[11px] font-semibold tracking-[3px] uppercase">Patient Stories</span>
+    </div>
+    <h2 class="font-serif text-[clamp(36px,3.5vw,56px)] font-bold tracking-[-1px] text-brand-white mb-4">
+      Real Smiles,<br />Real Results
+    </h2>
+    <p class="text-brand-muted text-base leading-[1.75] max-w-[560px]">
+      Hear from patients whose lives were transformed by a single decision to invest in their smile.
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    {testimonials.map(({ initial, name, meta, text }) => (
+      <div class="bg-deep-slate border border-deep-slate-border rounded-lg p-9
+                  hover:-translate-y-1 hover:border-luxury-gold/20
+                  transition-all duration-300">
+        <span class="font-serif text-[72px] text-luxury-gold/20 leading-[0.6] block mb-5">"</span>
+        <div class="flex gap-1 mb-5">
+          {Array(5).fill(0).map(() => (
+            <svg class="w-3.5 h-3.5 fill-luxury-gold" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          ))}
+        </div>
+        <p class="text-brand-white text-[15px] italic font-light leading-[1.75] mb-7">{text}</p>
+        <div class="flex items-center gap-3.5 pt-5 border-t border-deep-slate-border">
+          <div class="w-11 h-11 rounded-full flex-shrink-0 flex items-center justify-center
+                      bg-deep-slate-light border border-deep-slate-border
+                      font-serif font-bold text-luxury-gold text-base">
+            {initial}
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-brand-white">{name}</div>
+            <div class="text-[12px] text-brand-muted">{meta}</div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
